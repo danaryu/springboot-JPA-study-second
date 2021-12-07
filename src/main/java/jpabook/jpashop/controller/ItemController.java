@@ -72,6 +72,7 @@ public class ItemController {
 
     @PostMapping("items/{itemId}/edit")
     public String updateItem(@ModelAttribute("form") BookForm form) {
+/*
 
         Book book = new Book();
         book.setName(form.getName());
@@ -82,6 +83,10 @@ public class ItemController {
         book.setIsbn(form.getIsbn());
 
         itemService.saveItem(book);
+*/
+        // Transaction이 있는 서비스 계층에 변경할 데이터를 명확하게 전달!
+        itemService.updateItem(form.getId(), form.getName(), form.getPrice(), form.getStockQuantity());
+
         return "redirect:/items";
 
     }
