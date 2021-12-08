@@ -26,9 +26,8 @@ public class ItemService {
 
         Item findItem = itemRepository.findOne(itemId); // 영속상태 Entity
 
-
         // Parameter로 들어온 Paramter를 item에 Mapping한다. (권장하지 않는 방법)
-        /* 
+        /*
             findItem.setPrice(form.getPrice());
             findItem.setName(form.getName());
             findItem.setStockQuantity(form.getQuantity());
