@@ -28,7 +28,6 @@ public class ItemController {
 
     @PostMapping("/items/new")
     public String create(BookForm form) {
-
         Book book = new Book();
         book.setName(form.getName());
         book.setPrice(form.getPrice());
@@ -38,7 +37,6 @@ public class ItemController {
 
         itemService.saveItem(book);
         return "redirect:/";
-
     }
 
     @GetMapping("/items")
@@ -51,7 +49,6 @@ public class ItemController {
     /**
      * 상품 수정 폼
      */
-
     @GetMapping(value = "/items/{itemId}/edit")
     public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
 
