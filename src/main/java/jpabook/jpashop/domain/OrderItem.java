@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jpabook.jpashop.domain.item.Item;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -24,18 +25,12 @@ public class OrderItem {
     private Item item;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "order_id") // FK
     private Order order;
 
     private int orderPrice; // 주문 가격
     private int count; // 주문 당시 수량
-
-
-//
-//    protected OrderItem() {
-//
-//    }
-//
 
     public Long getId() {
         return id;
