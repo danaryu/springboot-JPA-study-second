@@ -29,7 +29,7 @@ public class InitDb {
         private final EntityManager em;
 
         public void dbInit1() {
-            Member member = createMember("danadot", "서울", "황학동", "210523");
+            Member member = createMember("danadot", "포항", "연일읍", "194755");
             em.persist(member);
 
             Book bookA = createBook("heepong book", 20000, 200);
@@ -48,7 +48,7 @@ public class InitDb {
         }
 
         public void dbInit2() {
-            Member member = createMember("heejae", "포항", "연일읍", "194755");
+            Member member = createMember("heejae", "서울", "황학동", "194753");
             em.persist(member);
 
             Book bookA = createBook("heepong", 20000, 100);
