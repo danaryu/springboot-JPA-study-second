@@ -80,6 +80,7 @@ public class OrderApiController {
         public OrderDto(Order order) {
             orderId = order.getId();
             name = order.getMember().getName();
+            orderDate = order.getOrderDate();
             orderStatus = order.getStatus();
             address = order.getDelivery().getAddress();
             /*order.getOrderItems().stream().forEach(item -> item.getItem().getName()); // proxy 초기화
