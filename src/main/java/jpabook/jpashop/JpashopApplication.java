@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 public class JpashopApplication {
 
 	public static void main(String[] args) {SpringApplication.run(JpashopApplication.class, args);}
+/*
 
 	@Bean
 	Hibernate5Module hibernate5Module() {
@@ -16,5 +17,6 @@ public class JpashopApplication {
 //		hibernate5Module.configure(Hibernate5Module.Feature.FORCE_LAZY_LOADING, true);
 		return hibernate5Module;
 	}
+*/
 
 }
