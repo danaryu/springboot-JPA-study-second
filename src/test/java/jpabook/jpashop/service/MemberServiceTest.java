@@ -1,15 +1,11 @@
 package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.repository.MemberRepository;
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
+import jpabook.jpashop.repository.MemberRepositoryOld;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MemberServiceTest {
 
     @Autowired MemberService memberService;
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    MemberRepositoryOld memberRepositoryOld;
     // @Autowired EntityManager em;
 
     @Test
@@ -36,7 +33,7 @@ public class MemberServiceTest {
 
         // then
         // em.flush(); // 영속성 CONTEXT FLUSH
-        assertEquals(member, memberRepository.findOne(savedId));
+        assertEquals(member, memberRepositoryOld.findOne(savedId));
     }
 
     @Test

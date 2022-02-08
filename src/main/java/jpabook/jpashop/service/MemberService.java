@@ -2,9 +2,8 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
-import lombok.AllArgsConstructor;
+import jpabook.jpashop.repository.MemberRepositoryOld;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,20 +17,20 @@ public class MemberService {
     /**
      * Field 생성자 주입 : private으로 의존성을 주입하기 때문에, 한 번 의존성이 주입되는 경우 Test등 변경/접근이 까다로움
      *    @Autowired
-     *    private MemberRepository memberRepository;
+     *    private MemberRepositoryOld memberRepositoryOld;
      *
      * Setter 주입 : Test등 여러 환경에 따라 의존성 주입이 가능하나, 생성 시점에 Setter를 이용해 다른 인스턴스를 주입할 수 있기 때문에 위험함
      *    @Autowired
-     *    public void setMemberRepository(MemberRepository memberRepository) {
-     *        this.memberRepository = memberRepository;
+     *    public void setMemberRepository(MemberRepositoryOld memberRepositoryOld) {
+     *        this.memberRepositoryOld = memberRepositoryOld;
      *    }
      *
      * 따라서, 가장 안전한 생성자 주입을 권장한다. (의존성 파악이 쉬움)
      *    생성자가 하나인 경우, Autowired Annotation이 없어도 생성자 주입이 가능함.
      *     & final로 하길 권장. Compile 시점에 체크가 가능하기 때문
      *    @Autowired
-     *    public MemberService(MemberRepository memberRepository) {
-     *        this.memberRepository = memberRepository;
+     *    public MemberService(MemberRepositoryOld memberRepositoryOld) {
+     *        this.memberRepositoryOld = memberRepositoryOld;
      *    }
      */
 
@@ -64,12 +63,12 @@ public class MemberService {
     }
 
     public Member findOne(Long memberId) {
-        return memberRepository.findOne(memberId);
+        return memberRepository.findById(memberId).get();
     }
 
     @Transactional
     public void update(Long id, String name) {
-        Member member = memberRepository.findOne(id);
+        Member member = memberRepository.findById(id).get();
         member.setName(name); // 변경감지 (dirty Checking)
     }
 }

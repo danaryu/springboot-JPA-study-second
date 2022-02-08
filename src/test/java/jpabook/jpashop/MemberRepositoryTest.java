@@ -13,7 +13,7 @@ class MemberRepositoryTest {
 /*
 
     @Autowired
-    MemberRepository memberRepository;
+    MemberRepositoryOld memberRepository;
 
     @Test
     // Transactional이 Test case에 있으면, Test가 끝나고 Rollback한다. Rolled back transaction for test
